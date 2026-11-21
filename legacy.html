@@ -60,6 +60,12 @@ a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inh
 @media(max-width:720px){.header{height:76px}.brand-sub{display:none}.nav{gap:21px}.nav .nav-cta{display:none}.hero{min-height:auto;grid-template-columns:1fr;padding-top:60px;padding-bottom:95px}.hero-title{font-size:clamp(70px,18vw,112px)}.hero-title .line:last-child{margin-left:12vw}.hero-intro{font-size:16px}.hero-art{min-height:490px;margin-top:25px}.hero-art::before{width:min(90%,430px)}.orbit{width:min(85%,410px)}.slip-wrap{width:205px;height:360px}.slip-poem{font-size:28px}.art-index{left:8%;top:70px}.hero-foot{bottom:27px}.section-head{margin-bottom:35px}.project{grid-template-columns:36px 1fr;gap:20px;padding:36px 0}.project-visual{grid-column:2;height:330px;grid-row:1;margin-bottom:8px}.project-no{grid-row:1;grid-column:1}.project-copy{grid-column:2}.project h3{font-size:43px}.project-desc{max-width:44ch}.about-grid{grid-template-columns:1fr;gap:40px}.principles{grid-template-columns:1fr}.principle{padding:22px 0}.principle+.principle{border-left:0;border-top:1px solid var(--line);padding-left:0}.contact-top{grid-template-columns:1fr;padding-bottom:60px}.contact-link{width:80px;height:80px}.contact-bottom{align-items:flex-start;flex-direction:column}.case-hero{padding-top:42px}.back-link{margin-bottom:48px}.case-layout{grid-template-columns:1fr;padding-top:50px}.case-aside{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.case-aside strong{font-size:20px}.case-banner{height:340px}.case-banner .watch{transform:scale(1.1) rotate(-8deg)}.download{align-items:flex-start;flex-direction:column}.case-pager{padding-bottom:55px}}
 @media(max-width:420px){.brand-name{font-size:15px}.brand-seal{width:29px;height:29px}.nav{gap:17px}.nav a{font-size:12px}.hero-title{font-size:20vw}.hero-art{min-height:430px}.slip-wrap{width:180px;height:320px}.slip-poem{font-size:24px;top:65px}.slip-top{left:27px;right:27px}.slip-seal{bottom:28px}.art-index{left:0}.project-visual{height:280px}.watch{transform:scale(.9) rotate(-8deg)}.project:hover .watch{transform:scale(.9) rotate(-3deg)}.ink-canvas{inset:25px}.bazi{transform:scale(.88) rotate(4deg)}.project:hover .bazi{transform:scale(.88) rotate(1deg)}.contact-title{font-size:13.8vw}.contact-links{gap:17px}.copyright{white-space:normal}.case-title{font-size:18vw}.case-banner{height:280px}.case-banner .watch{transform:scale(.95) rotate(-8deg)}.case-banner .bazi{transform:scale(.95) rotate(4deg)}.case-aside{gap:7px}.case-aside{font-size:7px}.case-pager a{font-size:13px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.js .reveal{opacity:1;transform:none}.orbit{animation:none}}
+body{animation:dshIn .36s ease both;transition:opacity .24s ease,transform .24s ease}
+@keyframes dshIn{from{opacity:0;transform:scale(1.015)}to{opacity:1;transform:none}}
+body.dsh-leaving{opacity:0;transform:scale(.985)}
+.ui-switch-back{position:fixed;right:clamp(14px,3vw,26px);bottom:clamp(14px,3vw,26px);z-index:99;display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border-radius:99px;border:1px solid rgba(166,67,50,.45);background:rgba(241,238,230,.92);color:#20251f;font:12px var(--sans);letter-spacing:.04em;cursor:pointer;box-shadow:0 8px 24px rgba(32,37,31,.16);transition:background .25s,color .25s}
+.ui-switch-back:hover{background:#a64332;color:#faf8f1;border-color:#a64332}
+@media(max-width:420px){.ui-switch-back{padding:7px 12px;font-size:11px}}
 </style>
 <script>document.documentElement.classList.add('js');</script>
 </head>
@@ -171,6 +177,13 @@ a{color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{font:inh
   window.addEventListener('hashchange',route);
   route();
 })();
+</script>
+<button class="ui-switch-back" id="uiBackNew" type="button" aria-label="切回新版界面">✦ 切回新版</button>
+<script>
+document.getElementById('uiBackNew').onclick = function(){
+  document.body.classList.add('dsh-leaving');
+  setTimeout(function(){ location.href = 'index.html' + (location.hash || ''); }, 220);
+};
 </script>
 </body>
 </html>
