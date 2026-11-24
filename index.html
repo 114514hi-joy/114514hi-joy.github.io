@@ -294,7 +294,7 @@ body.ui-leaving{opacity:0;transform:scale(.985)}
       vis:'<span class="cap mono">OPPO Watch 3 Pro · 378 × 496</span><div class="wt"><div style="width:82%;display:grid;gap:6px;text-align:left"><small style="margin:0;color:#8fb7a3">千问 · 360px</small><span style="display:block;background:#1e2621;padding:4px 6px;border-radius:6px;font-size:9px;line-height:1.3">手腕上的网页适配</span><span style="display:block;border:1px solid rgba(236,230,214,.22);padding:3px 6px;border-radius:99px;font-size:8px;color:#8d9186">向千问提问…</span></div></div>',
       aside:[['360','px 布局视口'],['40','dp 紧凑顶栏'],['6.2','MB 安装包']],
       body:`<h2>为什么不写原生</h2><p>手腕上只想随时问几句话，没必要自己搭服务端，也不用从零重写登录与会话流。直接把千问网页塞进 WebView，再把桌面级的网页按手表尺寸重新驯服。</p><h2>把 189px 撑回手机宽度</h2><p>378 × 496 物理像素、320 dpi 的表屏，系统默认只给网页 <strong>189px</strong> 宽，页面会直接挤成一列。注入脚本强行把 <code>meta[name=viewport]</code> 改写成 <code>width=360, initial-scale=0.525</code>，再用 <code>MutationObserver</code> 守住 <code>&lt;head&gt;</code>，登录后也不会被站点重置回窄屏。</p><h2>把能省的都省掉</h2><ul><li>关掉动效、阴影与模糊，拦截统计埋点与外部 Web 字体加载</li><li>隐藏「打开 APP」与底部免责声明，同时保留侧边栏与 <code>iframe</code> 登录弹窗</li><li>顶栏压到 40dp，收起输入法自动清理焦点，防止键盘反复弹起</li></ul><p>基于开源项目 AI-dock 二次改造，编译为关闭调试开销的 Release 包，实机内存与 Swap 占用显著下降。</p>`,
-      dl:['千问手表版 · Android APK','1nbo','https://wwani.lanzn.com/iOOzk4gwmowb'],prev:['case-3','小运势'],next:null}
+      dl:['千问手表版 · Android APK','1nbo','downloads/qianwen-watch.apk','免密码直链（约 6.1 MB） · <a href="https://wwani.lanzn.com/iOOzk4gwmowb" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">蓝奏云备用</a>（密码 <b>1nbo</b>）'] ,prev:['case-3','小运势'],next:null}
   };
   const host = document.getElementById('cases');
   host.innerHTML = Object.entries(cases).map(([id,c]) => `
@@ -302,7 +302,7 @@ body.ui-leaving{opacity:0;transform:scale(.985)}
     <header class="ch shell"><a class="back" href="#work">← 全部作品</a><div class="mono">${c.label}</div><h1>${c.t}</h1><p class="lede">${c.lede}</p><div class="meta">${c.meta.map(m=>`<span>${m}</span>`).join('')}</div></header>
     <div class="banner shell"><div class="vis">${c.vis}</div></div>
     <div class="cl shell"><aside>${c.aside.map(a=>`<div><strong>${a[0]}</strong>${a[1]}</div>`).join('')}</aside>
-      <div class="cb">${c.body}${c.dl?`<div class="dl"><div><div>${c.dl[0]}</div><div class="mono" style="margin-top:4px">蓝奏云 / 提取密码 <b>${c.dl[1]}</b></div></div><a class="btn" href="${c.dl[2]}" target="_blank" rel="noopener noreferrer">下载 APK ↗</a></div>`:''}</div></div>
+      <div class="cb">${c.body}${c.dl?`<div class="dl"><div><div>${c.dl[0]}</div><div class="mono" style="margin-top:4px">${c.dl[3]||'蓝奏云 / 提取密码 <b>'+c.dl[1]+'</b>'}</div></div><a class="btn" href="${c.dl[2]}" ${c.dl[3]?'download="qianwen-watch.apk"':'target="_blank" rel="noopener noreferrer"'}>下载 APK ↗</a></div>`:''}</div></div>
     <nav class="pg shell">${c.prev?`<a href="#${c.prev[0]}">← ${c.prev[1]}</a>`:'<a href="#work">← 全部作品</a>'}${c.next?`<a href="#${c.next[0]}">${c.next[1]} →</a>`:'<a href="#work">全部作品 →</a>'}</nav>
   </article></div>`).join('');
 
