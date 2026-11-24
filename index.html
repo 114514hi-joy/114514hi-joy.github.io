@@ -254,6 +254,9 @@ body.ui-leaving{opacity:0;transform:scale(.985)}
     <a class="row rv" href="#case-4"><span class="no">04</span>
       <div><div class="mono tp">WearOS · WebView adaptation</div><h3>千问手表版</h3><p>把网页版千问塞进 378 × 496 圆屏手表。重设 360px 视口、裁掉冗余控件，字看得清、能发能收。</p><span class="more">读设计故事 →</span></div>
       <div class="vis"><span class="cap mono">360px Viewport / Release</span><div class="wt"><div style="width:82%;display:grid;gap:6px;text-align:left"><small style="margin:0;color:#8fb7a3">千问 · 360px</small><span style="display:block;background:#1e2621;padding:4px 6px;border-radius:6px;font-size:9px;line-height:1.3">手腕上的网页适配</span><span style="display:block;border:1px solid rgba(236,230,214,.22);padding:3px 6px;border-radius:99px;font-size:8px;color:#8d9186">向千问提问…</span></div></div></div></a>
+    <a class="row rv" href="#case-5"><span class="no">05</span>
+      <div><div class="mono tp">WearOS · Pure Java / 23 KB</div><h3>酷狗概念版签到</h3><p>面向 32 位安卓手表的极简签到工具。零第三方重库，支持扫码与短信验证码登录，一键领取概念版 VIP。</p><span class="more">读设计故事 →</span></div>
+      <div class="vis"><span class="cap mono">Pure Java / 32-bit Ready</span><div class="wt"><div style="width:82%;display:grid;gap:6px;text-align:center"><small style="margin:0;color:#2bd999">酷狗概念版签到</small><span style="display:block;background:#2bd999;color:#0e1116;padding:4px 6px;border-radius:99px;font-size:9px;font-weight:700">一键签到领 VIP</span><span style="display:block;font-size:8px;color:#8d9186">23 KB · 无后台</span></div></div></div></a>
   </section>
 
   <section class="shell" id="about" style="padding-top:0">
@@ -294,7 +297,12 @@ body.ui-leaving{opacity:0;transform:scale(.985)}
       vis:'<span class="cap mono">OPPO Watch 3 Pro · 378 × 496</span><div class="wt"><div style="width:82%;display:grid;gap:6px;text-align:left"><small style="margin:0;color:#8fb7a3">千问 · 360px</small><span style="display:block;background:#1e2621;padding:4px 6px;border-radius:6px;font-size:9px;line-height:1.3">手腕上的网页适配</span><span style="display:block;border:1px solid rgba(236,230,214,.22);padding:3px 6px;border-radius:99px;font-size:8px;color:#8d9186">向千问提问…</span></div></div>',
       aside:[['360','px 布局视口'],['40','dp 紧凑顶栏'],['6.2','MB 安装包']],
       body:`<h2>为什么不写原生</h2><p>手腕上只想随时问几句话，没必要自己搭服务端，也不用从零重写登录与会话流。直接把千问网页塞进 WebView，再把桌面级的网页按手表尺寸重新驯服。</p><h2>把 189px 撑回手机宽度</h2><p>378 × 496 物理像素、320 dpi 的表屏，系统默认只给网页 <strong>189px</strong> 宽，页面会直接挤成一列。注入脚本强行把 <code>meta[name=viewport]</code> 改写成 <code>width=360, initial-scale=0.525</code>，再用 <code>MutationObserver</code> 守住 <code>&lt;head&gt;</code>，登录后也不会被站点重置回窄屏。</p><h2>把能省的都省掉</h2><ul><li>关掉动效、阴影与模糊，拦截统计埋点与外部 Web 字体加载</li><li>隐藏「打开 APP」与底部免责声明，同时保留侧边栏与 <code>iframe</code> 登录弹窗</li><li>顶栏压到 40dp，收起输入法自动清理焦点，防止键盘反复弹起</li></ul><p>基于开源项目 AI-dock 二次改造，编译为关闭调试开销的 Release 包，实机内存与 Swap 占用显著下降。</p>`,
-      dl:['千问手表版 · Android APK','1nbo','downloads/qianwen-watch.apk','免密码直链（约 6.1 MB） · <a href="https://wwani.lanzn.com/iOOzk4gwmowb" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">蓝奏云备用</a>（密码 <b>1nbo</b>）'] ,prev:['case-3','小运势'],next:null}
+      dl:['千问手表版 · Android APK','1nbo','downloads/qianwen-watch.apk','免密码直链（约 6.1 MB） · <a href="https://wwani.lanzn.com/iOOzk4gwmowb" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">蓝奏云备用</a>（密码 <b>1nbo</b>）'] ,prev:['case-3','小运势'],next:['case-5','酷狗概念版签到']},
+    'case-5':{label:'Case 05 · WearOS / 2026',t:'酷狗概念版签到',lede:'23 KB 的纯原生手表签到器。<br>用完即走，不驻留后台。',meta:['WearOS / 32位','纯 Java 无依赖','已开源'],
+      vis:'<span class="cap mono">23 KB · Pure Java</span><div class="wt"><div style="width:82%;display:grid;gap:6px;text-align:center"><small style="margin:0;color:#2bd999">酷狗概念版签到</small><span style="display:block;background:#2bd999;color:#0e1116;padding:4px 6px;border-radius:99px;font-size:9px;font-weight:700">一键签到领 VIP</span><span style="display:block;font-size:8px;color:#8d9186">23 KB · 无后台</span></div></div>',
+      aside:[['23','KB 安装包'],['32/64','位全架构通用'],['0','后台常驻']],
+      body:`<h2>为什么单独做一个签到器</h2><p>在 840 MB 内存的手表上装完整的第三方音乐客户端太重了，很多预编译包还只给了 64 位。干脆只把「登录 + 每日领 VIP」抽出来，写成纯原生 Java 小工具。</p><h2>极简到只剩标准库</h2><ul><li>零 Kotlin、零 AndroidX、零第三方库，纯原生 <code>HttpURLConnection</code> 与 <code>javax.crypto</code></li><li>同时支持手机酷狗扫码登录与手机号短信验证码登录</li><li>一键依次触发听歌领 VIP、每日畅听 VIP 与升级概念版 VIP</li></ul><p>项目已以 MIT 协议开源在 <a href="https://github.com/114514hi-joy/kugou-watch-checkin" target="_blank" rel="noopener noreferrer" style="border-bottom:1px solid currentColor">GitHub ↗</a>。</p>`,
+      dl:['酷狗概念版签到 · v1.0.0 APK','','downloads/kugou-watch-checkin.apk','免密码直链（23 KB） · <a href="https://github.com/114514hi-joy/kugou-watch-checkin/releases/tag/v1.0.0" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">GitHub Release</a> · <a href="https://github.com/114514hi-joy/kugou-watch-checkin" target="_blank" rel="noopener noreferrer" style="text-decoration:underline">源码仓库</a>'],prev:['case-4','千问手表版'],next:null}
   };
   const host = document.getElementById('cases');
   host.innerHTML = Object.entries(cases).map(([id,c]) => `
@@ -307,7 +315,7 @@ body.ui-leaving{opacity:0;transform:scale(.985)}
   </article></div>`).join('');
 
   const views = [...document.querySelectorAll('.view')];
-  const titles = {home:'寒彻歌未竟 — 独立开发者','case-1':'每日一签 — 寒彻歌未竟','case-2':'墨戏 — 寒彻歌未竟','case-3':'小运势 — 寒彻歌未竟','case-4':'千问手表版 — 寒彻歌未竟'};
+  const titles = {home:'寒彻歌未竟 — 独立开发者','case-1':'每日一签 — 寒彻歌未竟','case-2':'墨戏 — 寒彻歌未竟','case-3':'小运势 — 寒彻歌未竟','case-4':'千问手表版 — 寒彻歌未竟','case-5':'酷狗概念版签到 — 寒彻歌未竟'};
   let first = true;
   function route(){
     const raw = (location.hash||'#home').slice(1);
