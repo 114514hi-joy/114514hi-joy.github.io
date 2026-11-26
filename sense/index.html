@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>体感 Sense · iOS 26 液态玻璃传感器工作台</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 动态极光流光背景 -->
+  <div class="aurora-bg" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="ribbon"></div>
+  </div>
+
+  <!-- 顶部网页控制条（模式切换 + APK 下载） -->
+  <header class="web-topbar glass-pill">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span class="brand-name">体感 Sense</span>
+      <span class="brand-tag">Liquid Glass Web</span>
+    </div>
+
+    <div class="mode-switch" role="tablist" aria-label="视图模式">
+      <button class="mode-btn active" data-mode="phone">手机端</button>
+      <button class="mode-btn" data-mode="watch">手表端</button>
+      <button class="mode-btn" data-mode="full">全屏网页</button>
+    </div>
+
+    <a class="download-btn glass-pill" href="../downloads/watch-sense.apk" download="sense-liquid-glass.apk">
+      <span>下载 APK</span>
+      <span class="arrow">↓</span>
+    </a>
+  </header>
+
+  <!-- 主舞台 -->
+  <main class="stage mode-phone" id="stage">
+    <div class="device-shell" id="deviceShell">
+      <div class="app-viewport" id="appViewport">
+        <!-- 动态渲染当前页面 -->
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
+
