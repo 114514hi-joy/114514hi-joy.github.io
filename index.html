@@ -28,6 +28,10 @@ a{color:inherit;text-decoration:none}
 ::selection{background:var(--red);color:#fff}
 .shell{padding-inline:var(--gut);max-width:1480px;margin-inline:auto}
 .mono{font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;font-size:12px;color:var(--mute)}
+.qbanner{margin-top:clamp(22px,4vw,40px);padding:20px 24px;background:var(--bg2);border-left:3px solid var(--jade);text-align:center;cursor:pointer;transition:background .25s,border-color .25s}
+.qbanner:hover{background:var(--bg3)}
+.qbanner q{display:block;font:italic clamp(15px,1.7vw,18px)/1.8 var(--serif);color:var(--fg);quotes:none}
+.qbanner cite{display:block;margin-top:6px;font:13px/1.6 var(--serif);color:var(--mute);font-style:normal}
 
 /* grain */
 body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:50;opacity:.07;mix-blend-mode:overlay;
@@ -239,6 +243,8 @@ body.ui-leaving{opacity:0;transform:scale(.985)}
   </div>
   <div class="mq" aria-hidden="true"><div><span>离线</span><span>克制</span><span>诚实</span><span>手作</span><span>细节</span><span>不打扰</span><span>离线</span><span>克制</span><span>诚实</span><span>手作</span><span>细节</span><span>不打扰</span></div></div>
 
+  <div class="shell"><blockquote class="qbanner rv" id="qbanner" title="点击换一句"><q id="qtext">雄关漫道真如铁，而今迈步从头越。</q><cite id="qcite">—— 《忆秦娥·娄山关》</cite></blockquote></div>
+
   <section class="shell" id="work">
     <div class="sh rv"><h2>几件认真做的东西</h2><div class="mono">Selected work · 2024—2026</div></div>
     <a class="row rv" href="#case-1"><span class="no">01</span>
@@ -336,6 +342,17 @@ body.ui-leaving{opacity:0;transform:scale(.985)}
   const tg = document.getElementById('tg'), root = document.documentElement;
   const saved = localStorage.getItem('theme'); if(saved) root.dataset.theme = saved;
   tg.onclick = () => { const n = root.dataset.theme==='paper' ? 'ink' : 'paper'; root.dataset.theme = n; localStorage.setItem('theme', n); };
+
+  const quotes = [
+    ['雄关漫道真如铁，而今迈步从头越。','—— 《忆秦娥·娄山关》'],
+    ['千淘万漉虽辛苦，吹尽狂沙始到金。','—— 《浪淘沙》'],
+    ['路漫漫其修远兮，吾将上下而求索。','—— 《离骚》'],
+    ['不积跬步，无以至千里。','—— 《劝学》'],
+    ['行到水穷处，坐看云起时。','—— 《终南别业》']
+  ];
+  let qi = 0;
+  const qb = document.getElementById('qbanner');
+  if (qb) qb.onclick = () => { qi = (qi + 1) % quotes.length; document.getElementById('qtext').textContent = quotes[qi][0]; document.getElementById('qcite').textContent = quotes[qi][1]; };
 
   const uiTg = document.getElementById('uiTg');
   uiTg.onclick = () => {
